@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA2-Activity planner", "CA2-Activity planner.csproj", "{23DA6DE3-9E2F-42AF-BB5A-6373C10803D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23DA6DE3-9E2F-42AF-BB5A-6373C10803D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23DA6DE3-9E2F-42AF-BB5A-6373C10803D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23DA6DE3-9E2F-42AF-BB5A-6373C10803D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23DA6DE3-9E2F-42AF-BB5A-6373C10803D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48AEBF05-8651-4E2A-BFAE-1124F037D9A2}
+	EndGlobalSection
+EndGlobal
