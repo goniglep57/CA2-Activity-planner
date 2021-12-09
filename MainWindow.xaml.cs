@@ -21,15 +21,15 @@ namespace CA2_Activity_planner
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Activity> activities;
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        //private List<Activity> activities = new List<Activity>();
-        ////dont really understand this concept
-        //internal List<Activity> Activities { get => activities; set => activities = value; }
+        private List<Activity> activities = new List<Activity>();
+        //dont really understand this concept
+        internal List<Activity> Activities { get => activities; set => activities = value; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -45,7 +45,7 @@ namespace CA2_Activity_planner
              Activity boxing = new Activity("Boxing", 2022, 01, 11, "HIT workout in clonmany gym", 30);
              Activity karake = new Activity("Karake", 2022, 10, 11, "Intermediate group session", 30);
 
-            activities = new ObservableCollection<Activity>();
+           
 
             activities.Add(kayaking);
             activities.Add(treking);
@@ -61,8 +61,8 @@ namespace CA2_Activity_planner
 
 
 
-            //activities.Sort();
-            
+            activities.Sort();
+
 
             listActivities.ItemsSource = activities;
 
@@ -73,8 +73,15 @@ namespace CA2_Activity_planner
         //Method to print out the description of the activity when selected
         private void ListActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Activity selectedActivity = activities[listActivities.SelectedIndex];
-            txbkDescription.Text = selectedActivity.Description;
+            //Activity selectedActivity = activities[listActivities.SelectedIndex];
+            Activity selectedActivity = listActivities.SelectedItem as Activity;
+
+            if (selectedActivity != null)
+            {
+                txbkDescription.Text = selectedActivity.Description;
+            }
+           
+            
 
 
         }
@@ -85,7 +92,7 @@ namespace CA2_Activity_planner
             
             Activity selectedActivity = activities[listActivities.SelectedIndex];
 
-            //listActivities.Items.Remove(listActivities.SelectedItem);
+            listActivities.Items.Remove(listActivities.SelectedItem);
             if (selectedActivity == null)
             {
                 string message = "You need to click on an activity to move!!";
@@ -96,18 +103,30 @@ namespace CA2_Activity_planner
                 listSelected.Items.Add(selectedActivity);
             }
 
-            
-
-            
-
-          
-            
-
-    
-            
-        
-
         }
-        
+
+        private void rb_Checked(object sender, RoutedEventArgs e)
+        {
+            //if all checked
+            if (radioAll.IsChecked == true)
+            {
+                listActivities.ItemsSource = activities;
+            }
+
+            //if land checked
+            else if (radioLand.IsChecked == true)
+            {
+                foreach (Activity activities in activities)
+                {
+                    if (activities.Type == 'Land')
+                    {
+
+                    }
+                }
+            }
+            //if water checked
+
+            //if air checked
+        }
     }
 }

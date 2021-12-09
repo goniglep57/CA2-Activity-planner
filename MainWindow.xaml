@@ -11,10 +11,10 @@
             <ColumnDefinition Width="412*"/>
             <ColumnDefinition Width="381*"/>
         </Grid.ColumnDefinitions>
-        <RadioButton x:Name="radioAll" Content="All" HorizontalAlignment="Left" Margin="92,106,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioLand" Content="Land&#xD;&#xA;" HorizontalAlignment="Left" Margin="92,161,0,0" VerticalAlignment="Top" />
-        <RadioButton x:Name="radioWater" Content="Water" HorizontalAlignment="Left" Margin="92,215,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioAir" Content="Air" HorizontalAlignment="Left" Margin="92,261,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioAll" Content="All" HorizontalAlignment="Left" Margin="92,106,0,0" VerticalAlignment="Top" GroupName="rbGroup" Checked="rb_Checked"/>
+        <RadioButton x:Name="radioLand" Content="Land&#xD;&#xA;" HorizontalAlignment="Left" Margin="92,161,0,0" VerticalAlignment="Top" GroupName="rbGroup" Checked="rb_Checked" />
+        <RadioButton x:Name="radioWater" Content="Water" HorizontalAlignment="Left" Margin="92,215,0,0" VerticalAlignment="Top" GroupName="rbGroup" Checked="rb_Checked"/>
+        <RadioButton x:Name="radioAir" Content="Air" HorizontalAlignment="Left" Margin="92,261,0,0" VerticalAlignment="Top" GroupName="rbGroup" Checked="rb_Checked"/>
         <TextBlock x:Name="txbkTitle" HorizontalAlignment="Left" Margin="156,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Foreground="#FF2D3AC5"><Run Text="Activity "/><Run Text="Planne"/><Run Text="r"/></TextBlock>
         <ListBox x:Name="listActivities" HorizontalAlignment="Left" Height="246" Margin="165,107,0,0" VerticalAlignment="Top" Width="236" RenderTransformOrigin="0.5,0.5" SelectionChanged="ListActivities_SelectionChanged">
             <ListBox.RenderTransform>

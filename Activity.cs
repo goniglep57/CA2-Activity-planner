@@ -16,6 +16,14 @@ namespace CA2_Activity_planner
 
         public int Cost { get; set; }
 
+        public string Type { get; set; }
+        public enum ActivityType
+        {
+            Land,
+            Water,
+            Air
+        }
+
 
         //
         public Activity(string name, int year, int month, int day, string desc,  int cost )
@@ -24,6 +32,7 @@ namespace CA2_Activity_planner
             Date = new DateTime(year,month,day);
             Description = desc;
             Cost = cost;
+            Type = ActivityType;
             
             
 
