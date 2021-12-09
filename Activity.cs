@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace CA2_Activity_planner
 {
-    class Activity:IComparable
+
+    public enum ActivityType
+    {
+        Land,
+        Water,
+        Air
+    }
+    class Activity :IComparable
     {
         public string Name { get; set; }
        
@@ -16,23 +23,18 @@ namespace CA2_Activity_planner
 
         public int Cost { get; set; }
 
-        public string Type { get; set; }
-        public enum ActivityType
-        {
-            Land,
-            Water,
-            Air
-        }
+        public ActivityType Type { get; set; }
+        
 
 
-        //
-        public Activity(string name, int year, int month, int day, string desc,  int cost )
+        
+        public Activity(string name, int year, int month, int day, string desc,  int cost, ActivityType type )
         {
             Name = name;
             Date = new DateTime(year,month,day);
             Description = desc;
             Cost = cost;
-            Type = ActivityType;
+            Type = type;
             
             
 
