@@ -27,16 +27,16 @@ namespace CA2_Activity_planner
             InitializeComponent();
         }
 
-        private List<Activity> activities = new List<Activity>();
-        private List<Activity> selectedactivities = new List<Activity>();
-        private List<Activity> filteredList = new List<Activity>();
+        private List<Activity> activities = new List<Activity>();//list for original activities
+        private List<Activity> selectedactivities = new List<Activity>();//list for selected activities
+        private List<Activity> filteredList = new List<Activity>();//list for filtered activities
 
-        
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
           
-            
+            //creating 9 activities of object 'Activity'
             Activity kayaking = new Activity("Kayaking", 2021, 06, 21, "Half day lakeland kayak with island picnic", 40, ActivityType.Water);
             Activity treking = new Activity("Treking", 2021, 07, 26, "Full day job treking hard", 25,ActivityType.Land);
             Activity parachuting = new Activity("Parachuting", 2021, 02, 28, "Jumping from 20000ft", 165, ActivityType.Air);
@@ -48,7 +48,7 @@ namespace CA2_Activity_planner
              Activity karake = new Activity("Karake", 2022, 10, 11, "Intermediate group session", 30, ActivityType.Land);
 
            
-
+            //adding to original list
             activities.Add(kayaking);
             activities.Add(treking);
             activities.Add(parachuting);
@@ -59,14 +59,10 @@ namespace CA2_Activity_planner
              activities.Add(boxing);
              activities.Add(karake);
 
+            activities.Sort();//sorting by date(this is done in activity class)
 
 
-
-
-            activities.Sort();
-
-
-            listActivities.ItemsSource = activities;
+            listActivities.ItemsSource = activities;//setting the first listbox items to orginal list
 
             
             
@@ -108,10 +104,10 @@ namespace CA2_Activity_planner
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
 
-            Activity selectedActivity = listActivities.SelectedItem as Activity;
+            Activity selectedActivity = listActivities.SelectedItem as Activity;//getting the selected item on listbox1
 
             
-            if (selectedActivity == null)
+            if (selectedActivity == null)//checkig to see if something has been clicked
             {
                 string message = "You need to click on an activity to move!!";
                 MessageBox.Show(message);
@@ -119,12 +115,15 @@ namespace CA2_Activity_planner
             else
             {
                 selectedactivities.Add(selectedActivity);
-                totalPrice += selectedActivity.Cost;
+                totalPrice += selectedActivity.Cost;//incrementing the cost to whatever the object price is
                 priceBox.Text = priceBox.Text = "$" + totalPrice.ToString();
                 string message = " ";
-                txbkDescription.Text = message;
-                activities.Remove(selectedActivity);
+                txbkDescription.Text = message;//reseting the description
 
+                activities.Remove(selectedActivity);//removing item from original list
+
+
+                //this below code REFRESHES the lists
                 listActivities.ItemsSource = null;
 
                 listActivities.ItemsSource = activities;
@@ -150,6 +149,7 @@ namespace CA2_Activity_planner
             }
             else
             {
+                //all same code as above-see for notes
                 activities.Add(selectedActivity);
 
                 totalPrice -= selectedActivity.Cost;
