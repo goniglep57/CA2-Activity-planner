@@ -21,7 +21,7 @@ namespace CA2_Activity_planner
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        int totalPrice = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,10 +29,9 @@ namespace CA2_Activity_planner
 
         private List<Activity> activities = new List<Activity>();
         private List<Activity> selectedactivities = new List<Activity>();
-        private List<Activity> Filteredactivities = new List<Activity>();
+        private List<Activity> filteredList = new List<Activity>();
 
-        //dont really understand this concept
-        //internal List<Activity> Activities { get => activities; set => activities = value; }
+        
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -73,20 +72,36 @@ namespace CA2_Activity_planner
             
         }
 
-        //Method to print out the description of the activity when selected
+        //Method to print out the description of the activity when selected from the original list
         private void ListActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             Activity selectedActivity = listActivities.SelectedItem as Activity;
-
+            
             if (selectedActivity != null)
             {
                 txbkDescription.Text = selectedActivity.Description;
             }
+
+           
+            
            
             
 
 
+        }
+
+        //Method to print out the description of the activity when selected from the selected list
+        private void ListSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            Activity selectedActivty2 = listSelected.SelectedItem as Activity;
+
+
+            if (selectedActivty2 != null)
+            {
+                txbkDescription.Text = selectedActivty2.Description;
+            }
         }
 
         //method to move the selected activity to the selected activity listbox when the button is clicked
@@ -104,6 +119,10 @@ namespace CA2_Activity_planner
             else
             {
                 selectedactivities.Add(selectedActivity);
+                totalPrice += selectedActivity.Cost;
+                priceBox.Text = priceBox.Text = "$" + totalPrice.ToString();
+                string message = " ";
+                txbkDescription.Text = message;
                 activities.Remove(selectedActivity);
 
                 listActivities.ItemsSource = null;
@@ -119,34 +138,102 @@ namespace CA2_Activity_planner
 
         }
 
+        //method to move the selected activity from 2nd box back to original box
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Activity selectedActivity = listSelected.SelectedItem as Activity;
+
+            if (selectedActivity == null)
+            {
+                string message = "You need to click on an activity to move!!";
+                MessageBox.Show(message);
+            }
+            else
+            {
+                activities.Add(selectedActivity);
+
+                totalPrice -= selectedActivity.Cost;
+                priceBox.Text = "$" + totalPrice.ToString();
+                string message = " ";
+                txbkDescription.Text = message;
+
+                selectedactivities.Remove(selectedActivity);
+
+                listActivities.ItemsSource = null;
+
+                listActivities.ItemsSource = activities;
+
+                listSelected.ItemsSource = null;
+
+                listSelected.ItemsSource = selectedactivities;
+
+
+            }
+
+
+        }
 
 
 
-
-
+        //method to filter the activity box by TYPE
         private void rb_Checked(object sender, RoutedEventArgs e)
         {
-            ////if all checked
-            //if (radioAll.IsChecked == true)
-            //    {
-            //        listActivities.ItemsSource = activities;
-            //    }
-
-            //    //if land checked
-            //    else if (radioLand.IsChecked == true)
-            //    {
-            //        foreach (Activity activities in activities)
-            //        {
-            //            if (activities.Type == 'Land')
-            //            {
+            //RESETS THE FILTER
+            filteredList.Clear();
+            listActivities.ItemsSource = null;
 
 
-            //            }
-            //        }
-            //    }
-            //    //if water checked
+            //if all checked
+            if (radioAll.IsChecked == true)
+            {
+                listActivities.ItemsSource = activities;
+            }
 
-            ////  if air checked
+            //if land checked
+            else if (radioLand.IsChecked == true)
+            {
+                foreach (Activity activity in activities)
+                {
+                    if (activity.Type == ActivityType.Land)
+                    {
+                        filteredList.Add(activity);
+
+                    }
+                    
+                }
+                listActivities.ItemsSource = filteredList;
+            }
+            //if water checked
+            else if (radioWater.IsChecked == true)
+            {
+                foreach (Activity activity in activities)
+                {
+                    if (activity.Type == ActivityType.Water)
+                    {
+                        filteredList.Add(activity);
+
+                    }
+                    
+                }
+                listActivities.ItemsSource = filteredList;
+            }
+
+            //  if air checked
+            else if (radioAir.IsChecked == true)
+            {
+                foreach (Activity activity in activities)
+                {
+                    if (activity.Type == ActivityType.Air)
+                    {
+                        filteredList.Add(activity);
+
+                    }
+                    
+                }
+                listActivities.ItemsSource = filteredList;
+            }
         }
+
+       
     }
 }

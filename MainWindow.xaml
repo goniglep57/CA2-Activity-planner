@@ -28,12 +28,13 @@
         </ListBox>
         <TextBlock x:Name="txbkType" HorizontalAlignment="Left" Margin="169,93,0,0" TextWrapping="Wrap" Text="changes every time" VerticalAlignment="Top"/>
         <Button x:Name="btnAdd" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="14.5,161,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="BtnAdd_Click"/>
-        <Button x:Name="btnRemove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="14.5,231,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <ListBox x:Name="listSelected" HorizontalAlignment="Left" Height="241" Margin="116.5,106,0,0" VerticalAlignment="Top" Width="233" Grid.Column="1"/>
+        <Button x:Name="btnRemove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="14.5,231,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="BtnRemove_Click"/>
+        <ListBox x:Name="listSelected" HorizontalAlignment="Left" Height="241" Margin="116.5,106,0,0" VerticalAlignment="Top" Width="233" Grid.Column="1" SelectionChanged="ListSelected_SelectionChanged"/>
         <TextBlock x:Name="txbkCost" HorizontalAlignment="Left" Margin="136.5,40,0,0" TextWrapping="Wrap" Text="Total Cost" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock x:Name="txbkSelected" HorizontalAlignment="Left" Margin="136.5,85,0,0" TextWrapping="Wrap" Text="Selected Activities" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock x:Name="txbkDescTitle" HorizontalAlignment="Left" Margin="169,361,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
         <TextBlock x:Name="txbkDescription" HorizontalAlignment="Left" Margin="169,382,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="15" Width="431"/>
+        <TextBlock x:Name="priceBox" Grid.Column="1" HorizontalAlignment="Left" Margin="198,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
